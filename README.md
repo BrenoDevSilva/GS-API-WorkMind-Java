@@ -106,6 +106,11 @@ http://localhost:8080
 
 ---
 
+## Está disponibilizado junto com a nossa api um Export com todas as requisições caso queira importar para o Postman:
+- (WorkMind SkillQuest API.postman_collection)
+
+
+
 # 🔌 Endpoints
 
 ## 🔐 1. Autenticação
