@@ -1,0 +1,378 @@
+{
+	"info": {
+		"_postman_id": "c6a15b23-b2cf-4224-9c98-e941c10fca31",
+		"name": "WorkMind SkillQuest API",
+		"description": "Coleção organizada por Entidades (Usuários e Trilhas) para validação da GS.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39886726"
+	},
+	"item": [
+		{
+			"name": "Usuários",
+			"item": [
+				{
+					"name": "POST Criar Usuário",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Usuario de Teste\",\r\n  \"email\": \"teste@workmind.com\",\r\n  \"senha\": \"123\", \r\n  \"areaAtuacao\": \"Testes\",\r\n  \"nivelCarreira\": \"JUNIOR\",\r\n  \"pontosXP\": 0,\r\n  \"statusBemEstar\": \"OK\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fazer Login (Obter o Token)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"teste@workmind.com\",\r\n  \"senha\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/usuarios/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Atualizar Usuário",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Diego Developer (Promovido)\",\r\n  \"email\": \"diego.dev@workmind.com\", \r\n  \"areaAtuacao\": \"DevOps\",\r\n  \"nivelCarreira\": \"PLENO\", \r\n  \"pontosXP\": 1200,\r\n  \"statusBemEstar\": \"OK\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/usuarios/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DEL Deletar Usuário",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/usuarios/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"7"
+							]
+						},
+						"description": "Deleta o usuário ID 4 (criado no POST anterior)."
+					},
+					"response": []
+				},
+				{
+					"name": "GET Buscar Todos os Usuários",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Buscar Usuário por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/usuarios/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Ver Ranking (XP)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/usuarios/ranking",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"ranking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Sugerir Missão (Mock IA)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/usuarios/1/sugerir-missao",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"1",
+								"sugerir-missao"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Trilhas",
+			"item": [
+				{
+					"name": "POST Criar Trilha",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Fundamentos de Cloud (AWS)\",\r\n  \"descricao\": \"Curso introdutório sobre AWS S3 e EC2.\",\r\n  \"nivel\": \"INICIANTE\",\r\n  \"cargaHoraria\": 15,\r\n  \"focoPrincipal\": \"Cloud Computing\",\r\n  \"recompensaXP\": 500\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/trilhas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"trilhas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Listar Todas as Trilhas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/trilhas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"trilhas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Buscar Trilha por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/trilhas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"trilhas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Buscar por Foco",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/trilhas/buscar?foco=Inteligencia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"trilhas",
+								"buscar"
+							],
+							"query": [
+								{
+									"key": "foco",
+									"value": "Inteligencia"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Atualizar Trilha",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Prompt Engineering Avançado\",\r\n  \"descricao\": \"Curso atualizado.\",\r\n  \"nivel\": \"AVANCADO\",\r\n  \"cargaHoraria\": 30,\r\n  \"focoPrincipal\": \"Inteligencia Artificial\",\r\n  \"recompensaXP\": 1000\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/trilhas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"trilhas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DEL Deletar Trilha",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/trilhas/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"trilhas",
+								"4"
+							]
+						},
+						"description": "Deleta a trilha ID 4 (criada no POST)."
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
